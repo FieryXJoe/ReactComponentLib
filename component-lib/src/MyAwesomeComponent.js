@@ -23,3 +23,4 @@ const MyAwesomeComponent = (props) => {
  * Decided not to use PropTypes, this doesn't need to be reusable, it is made for this specific situation
  * and it passes PropTypes to all the different components it uses
  */
+export default MyAwesomeComponent;

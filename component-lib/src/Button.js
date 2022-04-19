@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const defaultStyle = {height: 100 };
 const Button = (props) => {
     //Will use same Size for Font * width for now
@@ -11,8 +13,8 @@ Button.propTypes = {
     children: PropTypes.node.isRequired,
     size: PropTypes.string.isRequired,
     roundedCorners: PropTypes.bool,
-    onClick: PropTypes.func.isrequired,
-    BGColor: PropTypes.string.isrequired,
+    onClick: PropTypes.func.isRequired,
+    BGColor: PropTypes.string.isRequired,
     color: PropTypes.string
 };
 Button.defaultProps = {
@@ -20,3 +22,5 @@ Button.defaultProps = {
     roundedCorners: false,
     color: "black"
 };
+
+export default Button;

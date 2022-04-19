@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 /**
  * Copied from homework, if it ain't broke don't fix it
  */
@@ -17,3 +18,5 @@ Box.defaultProps = {
     size: "small",
     roundedCorners: false
 };
+
+export default Box;
