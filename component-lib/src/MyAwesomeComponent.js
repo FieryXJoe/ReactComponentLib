@@ -7,29 +7,19 @@ const defaultStyle = {height: 100 };
 const MyAwesomeComponent = (props) => {
     //Will use same Size for Font * width for now
     return (<div>
-        <Box roundedCorners={"True"} BGColor={"blue"}>
+        <Box roundedCorners={"True"} BGColor={"blue"} size={"large"} style={{height:400}}>
             <Text>
                 This is a Text Component
             </Text>
             <br />
-            <Button>
+            <Button onClick = {() => alert("Hello World")} BGColor={"red"}>
                 Alert
             </Button>
             {props.children}
         </Box>
     </div>);
 };
-MyAwesomeComponent.propTypes = {
-    style: PropTypes.object,
-    children: PropTypes.node.isRequired,
-    size: PropTypes.string.isRequired,
-    roundedCorners: PropTypes.bool,
-    onClick: PropTypes.func.isrequired,
-    BGColor: PropTypes.string.isrequired,
-    color: PropTypes.string
-};
-MyAwesomeComponent.defaultProps = {
-    size: "small",
-    roundedCorners: false,
-    color: "black"
-};
+/**
+ * Decided not to use PropTypes, this doesn't need to be reusable, it is made for this specific situation
+ * and it passes PropTypes to all the different components it uses
+ */
