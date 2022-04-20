@@ -2,8 +2,6 @@ import Box from './Box'
 import Button from './Button'
 import Text from './Text'
 
-const defaultStyle = {height: 100 };
-
 const MyAwesomeComponent = (props) => {
     //Will use same Size for Font * width for now
     return (<div>
