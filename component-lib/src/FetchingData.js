@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import Loading from './Loading';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useFetch from './hooks/useFetch';
 
@@ -20,5 +19,4 @@ const FetchingData = () => {
         )})}  
         </>);}
         
-
 export default FetchingData;
