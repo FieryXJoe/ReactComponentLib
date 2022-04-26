@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Loading from './Loading';
 import axios from 'axios';
 
 const baseURL = 'http://localhost:3000/'
@@ -20,7 +19,7 @@ const useFetch = (endURL) => {
                 setLoading(false);
             }
         };
-        getPosts();
+        getData();
     }, [endURL]);
 
     return {data, loading, error};

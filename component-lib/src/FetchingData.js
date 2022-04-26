@@ -1,27 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import Loading from './Loading';
 import axios from 'axios';
+import useFetch from './hooks/useFetch';
 
 const FetchingData = () => {
     const[posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        const getPosts = async () => {
-            try{
-                const response = await axios.get("http://localhost:3000/posts");
-                setPosts(response.data);
-            }catch (error){
-                console.log(error);
-            }
-        };
-        getPosts();
-    }, []);
+    const {data, loading, error} = useFetch('posts');
 
-    return (<div>
-        { posts.length ? posts.map((post) => {
-            return <div key ={post.id}>{post.title}</div>;
-        }): <Loading />}
-    </div>);
-}
+    if(loading){
+        return  <Loading />;
+    }
+    return (<>
+        { data.length && data.map((data) => {
+            return(
+                <div key ={data.id}>
+                    {data.title}
+                </div>    
+        )})}  
+        </>);}
+        
 
 export default FetchingData;
