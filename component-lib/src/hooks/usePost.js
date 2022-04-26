@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const baseURL = 'http://localhost:3000/'
 
-const usePost = (endURL) => {
+const usePost = (endURL, object) => {
     const[loading, setLoading] = useState(true);
     const[data, setData] = useState([]);
     const[error, setError] = useState('');
@@ -11,7 +11,7 @@ const usePost = (endURL) => {
     useEffect(() => {
         const getData = async () => {
             try{
-                const response = await axios.post(`${baseURL}${endURL}`);
+                const response = await axios.post(`${baseURL}${endURL}`, object);
                 setData(response.data);
             }catch (error){
                 setError(error);
