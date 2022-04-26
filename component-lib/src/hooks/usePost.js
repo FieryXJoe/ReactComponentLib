@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const baseURL = 'http://localhost:3000/'
 
-const useFetch = (endURL) => {
+const usePost = (endURL) => {
     const[loading, setLoading] = useState(true);
     const[data, setData] = useState([]);
     const[error, setError] = useState('');
@@ -11,7 +11,7 @@ const useFetch = (endURL) => {
     useEffect(() => {
         const getData = async () => {
             try{
-                const response = await axios.get(`${baseURL}${endURL}`);
+                const response = await axios.post(`${baseURL}${endURL}`);
                 setData(response.data);
             }catch (error){
                 setError(error);
@@ -25,4 +25,4 @@ const useFetch = (endURL) => {
     return {data, loading, error};
 }
 
-export default useFetch;
+export default usePost;

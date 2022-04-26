@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import usePost from './hooks/usePost';
+import Loading from './Loading';
 
-const FetchingData = () => {
+const PostingData = () => {
     const[posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        const getPosts = async () => {
-            const response = await axios.post("http://localhost:3000/posts");
-            setPosts(response.data);
-        };
-        getPosts();
-    }, []);
+    const {data, loading, error} = usePost('posts');
 
-    return (<div>
-        { posts.length && posts.map((post) => {
-            return <div key ={post.id}>{post.title}</div>;
-        })}
-    </div>);
-}
-
-export default FetchingData;
+    if(loading){
+        return  <Loading />;
+    }
+    return (<>
+        { data.length && data.map((data) => {
+            return(
+                <div key ={data.id}>
+                    {data.title}
+                </div>    
+        )})}  
+        </>);}
+        
+export default PostingData;

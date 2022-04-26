@@ -1,34 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import useFetch from './hooks/useFetch';
 import Loading from './Loading';
+
 const FetchingData = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/posts/');
-        setProducts(response.data);
-      } catch (error) {
-        console.log('An error ocurred:', error);
-      }
-    };
-    getData();
-  }, []);
-  return (
-    <>
-      {products.length ? (
-        products.map((product) => {
-          return (
-            <div key={product.id}>
-              <p>{product.title}</p>
-              <p>{product.body}</p>
-            </div>
-          );
-        })
-      ) : (
-        <Loading />
-      )}
-    </>
-  );
-};
+    const[posts, setPosts] = useState([]);
+
+    const {data, loading, error} = useFetch('posts');
+
+    if(loading){
+        return  <Loading />;
+    }
+    return (<>
+        { data.length && data.map((data) => {
+            return(
+                <div key ={data.id}>
+                    {data.title}
+                </div>    
+        )})}  
+        </>);}
+        
 export default FetchingData;
