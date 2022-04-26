@@ -11,6 +11,9 @@ const PostingData = (props) => {
         title: props.inputTitle,
         body: props.inputBody
     }
+    const goBack = (event) => {
+        window.location.reload();
+    }
     const { data, loading, error } = usePost('posts', object);
     return (
         loading ?
@@ -26,6 +29,9 @@ const PostingData = (props) => {
                 <b style = {{marginLeft:20}}>{props.inputTitle}</b>
                 <label>Body</label>
                 <b style = {{marginLeft:20}}>{props.inputBody}</b>
+                <button onClick = {goBack} className="button">
+                    Go Back
+                </button>  
             </>
             :
             <>
